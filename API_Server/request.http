@@ -1,0 +1,32 @@
+### hello world
+get http://localhost:2016/
+
+### all scp
+get http://localhost:2016/api/scp
+
+### one scp
+get http://localhost:2016/api/scp/31
+
+### add scp
+post http://localhost:2016/api/scp
+Content-Type: application/json
+
+{
+    "item_number": "SCP-201",
+    "name": "bubbly trancula",
+    "class": "Keter",
+    "series": 2
+}
+
+### update scp
+patch http://localhost:2016/api/scp/31
+Content-Type: application/json
+
+{
+    "item_number": "SCP-202",
+    "name": "bubbly trancula",
+    "class": "Safe",
+    "series": 2
+}
+### delete scp
+delete http://localhost:2016/api/scp/32
