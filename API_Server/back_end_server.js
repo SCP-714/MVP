@@ -1,17 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const { Pool } = require('pg');
-const port = 2016;
+
+const config=require('./config')[process.env.NODE_ENV||'dev'];
+const PORT = config.port;
+const pool= new Pool({
+    connectionString: config.connectionString
+});
+pool.connect();
 
 app.use(express.json());
-
-const pool = new Pool({
-    user: 'postgres',
-    host: '127.0.0.1',
-    database: 'scp_mvp',
-    password: 'docker',
-    port: 5432,
-});
+app.use(cors());
 
 
 app.get('/', (req, res) => {
@@ -109,6 +109,6 @@ app.delete('/api/scp/:id', (req, res) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`Back end running on ${port}`);
+app.listen(PORT, () => {
+    console.log(`Back end running on ${PORT}`);
 }); 

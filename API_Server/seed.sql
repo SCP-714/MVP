@@ -8,8 +8,7 @@ INSERT INTO scp (item_number,name,class,series) values('SCP-007','Abdominal Plan
 INSERT INTO scp (item_number,name,class,series) values('SCP-008','Zombie Plague','CLASS 4 VERIFICATION REQUIRED','REDACTED');
 INSERT INTO scp (item_number,name,class,series) values('SCP-009','Red Ice','Euclid',1);
 INSERT INTO scp (item_number,name,class,series) values('SCP-010','Collars of Control','Safe',1);
-INSERT INTO scp (item_number,name,class,series) values('SCP-011','Sentient Civil War Memorial Statue','Safe'
-,1);
+INSERT INTO scp (item_number,name,class,series) values('SCP-011','Sentient Civil War Memorial Statue','Safe',1);
 INSERT INTO scp (item_number,name,class,series) values('SCP-012','A Bad Composition','Euclid',1);
 INSERT INTO scp (item_number,name,class,series) values('SCP-013','Blue Lady Cigarettes','Safe','1');
 INSERT INTO scp (item_number,name,class,series) values('SCP-014','The Concrete Man','Safe',1);

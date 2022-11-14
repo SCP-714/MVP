@@ -5,31 +5,54 @@ let apiUrl =
     ENV == 'dev' ? 'http://localhost:2016/' : 'https://api-serverwuqr.onrender.com/';
 console.log('API', apiUrl);
 
+const $results = $('#results');
+
 console.log('helloWorld');
 const $displayButton = $('#display-scp');
-//const $results = $('#results');
-$displayButton.on('click', displayAllSCP());
+const $searchButton = $('#searchButton');
+const $searchBar = $('#searchBar'); 
+$displayButton.on('click', displayAllSCP);
 
-function displayAllSCP(){
-    $.get(`${apiUrl}scp`).done(generateSCP);
+function displayAllSCP() {
+    $.get(`${apiUrl}api/scp`).done(generateSCP);
     clearResults();
-    console.log('working');
+    console.log('display all scp');
 }
+
 
 function generateSCP(data) {
-    for (let i = 0; i < result.length; i++) {
-        `<div class="card" style="width: 18rem;">
+    for (let i = 0; i < data.length; i++) {
+        // eslint-disable-next-line no-unused-vars
+        let $result = $(
+            `<div class="card" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="WIP SCP Image">
                         <div class="card-body">
-                            <h5 class="card-title">${data[0]}</h5>
-                            <p class="card-text"></p>
-                            <p class="card-text"></p>
-                            <p class="card-text"></p>
+                            <h5 class="card-title">${data[i].item_number}</h5>
+                            <p class="card-text">${data[i].name}</p>
+                            <p class="card-text">${data[i].class}</p>
+                            <p class="card-text">${data[i].series}</p>
                             <a href="https://scp-wiki.wikidot.com/scp-series" class="btn btn-primary</a>
                         </div>
-                </div>`;
+                </div>`);
+
+        $results.append($result);
     }
 }
+
+
+function searchAllSCP() {
+    $.get(`${apiUrl}api/scp/`).done(generateSCP);
+    clearResults();
+    console.log('display all scp');
+}
+
+
+
+
+
+
+
+
 
 function clearResults() {
     $('#results').empty();
