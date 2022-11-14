@@ -5,7 +5,7 @@ get http://localhost:2016/
 get http://localhost:2016/api/scp
 
 ### one scp
-get http://localhost:2016/api/scp/31
+get http://localhost:2016/api/scp/1
 
 ### add scp
 post http://localhost:2016/api/scp

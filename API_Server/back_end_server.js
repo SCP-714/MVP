@@ -110,5 +110,5 @@ app.delete('/api/scp/:id', (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Example app on port ${port}`);
+    console.log(`Back end running on ${port}`);
 }); 

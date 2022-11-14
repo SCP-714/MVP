@@ -7,5 +7,5 @@ const app = express();
 app.use(express.static('public'));
 
 app.listen(PORT, () => {
-    console.log(`your front end server that serves up static files, is listening on ${PORT}`);
+    console.log(`front end server is running on ${PORT}`);
 });
