@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
-const ENV = 'dev';
+const ENV = 'production';
 const apiUrl = ENV == 'dev' ? 'http://localhost:2016/' : 'https://mvp-backend.onrender.com';
 console.log('API', apiUrl);
+
 const $results = $('#results');
 const $displayButton = $('#display-scp');
 const $searchButton = $('#searchButton');
