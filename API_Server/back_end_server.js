@@ -43,7 +43,11 @@ app.get('/api/scp/:id', (req, res) => {
         try {
             let querystring = 'SELECT * FROM scp WHERE id = $1';
             const result = await client.query(querystring, [req.params.id]);
-            res.send(result.rows);
+            if (result.rows.length == 0){
+                res.sendStatus(404);
+            }else{
+                res.send(result.rows);
+            }
         } catch (e) {
             console.log(e.stack);
         }
