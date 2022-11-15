@@ -1,0 +1,26 @@
+#body{
+    background-color:#303030;
+    padding: 5px;
+}
+
+#navBar{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+#card{
+    text-align:center;
+}
+
+/* #createCard{
+
+} */
+
+
+#results{
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    height: 300px;
+
+}

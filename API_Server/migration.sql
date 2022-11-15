@@ -4,6 +4,7 @@ CREATE TABLE scp(
 id serial,
 item_number text,
 name text,
-class varchar(15),
-series text
+class text,
+series text,
+img text
 );

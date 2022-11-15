@@ -7,16 +7,18 @@
     <title>Document</title>
     <script defer src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script defer src="./index.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="body">
     
 
-
+<div id="navBar">
     <button type="button" class="btn btn-primary" id="display-scp">Display all SCP's</button>
     <button type="button" class="btn btn-success" id ="create-scp">Create a SCP</button>
     <button type="button" class="btn btn-danger" id ="delete-scp">Delete a SCP</button>
-    <input type="search" placeholder="Search" aria-label="Search" id="searhBar">
+    <input type="search" placeholder="Search" aria-label="Search" id="input">
     <button type="button" class="btn btn-secondary" id="searchButton">Search</button>
+</div>
     <div id="results"></div>
     
 
