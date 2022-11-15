@@ -2,7 +2,7 @@
 const ENV = 'dev';
 
 let apiUrl =
-    ENV == 'dev' ? 'http://localhost:2016/' : 'https://api-serverwuqr.onrender.com/';
+    ENV == 'dev' ? 'http://localhost:2016/' : 'https://mvp-backend.onrender.com';
 console.log('API', apiUrl);
 
 const $results = $('#results');
