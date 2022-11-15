@@ -3,16 +3,21 @@ const config=require('./config')[process.env.NODE_ENV||'dev'];
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const { Pool } = require('pg');
+//const { Pool } = require('pg');
+const { Client } = require('pg');
 app.use(express.json());
 app.use(cors());
 //const PORT = 2016;        //local
 const PORT = config.port;   //render
-const pool= new Pool({
-    connectionString: config.connectionString
-});
-pool.connect();
+// const pool= new Pool({
+//     connectionString: config.connectionString
+// });
+// pool.connect();
 
+const client = new Client({
+    connectionString: config.connectionString,
+});
+client.connect();
 
 app.get('/', (req, res) => {
     res.send('HelloWorld!');
@@ -23,7 +28,7 @@ app.get('/api/scp', (req, res) => {
     async function allSCP() {
         try {
             let querystring = 'SELECT * FROM scp';
-            const result = await pool.query(querystring);
+            const result = await client.query(querystring);
             res.send(result.rows);
         } catch (e) {
             console.log(e.stack);
@@ -37,7 +42,7 @@ app.get('/api/scp/:id', (req, res) => {
     async function getSCP() {
         try {
             let querystring = 'SELECT * FROM scp WHERE id = $1';
-            const result = await pool.query(querystring, [req.params.id]);
+            const result = await client.query(querystring, [req.params.id]);
             res.send(result.rows);
         } catch (e) {
             console.log(e.stack);
@@ -56,7 +61,7 @@ app.post('/api/scp', (req, res) => {
             let danger = scp.class;
             let series = scp.series;
             let querystring = 'INSERT INTO scp (item_number,name,class,series) VALUES ($1,$2,$3,$4)';
-            const result = await pool.query(querystring, [item, name, danger, series]);
+            const result = await client.query(querystring, [item, name, danger, series]);
             res.send(result.rows);
         } catch (e) {
             console.log(e.stack);
@@ -77,7 +82,7 @@ app.patch('/api/scp/:id', (req, res) => {
             let id = req.params.id;
             let querystring = 'UPDATE scp SET item_number = $1, name = $2, class = $3, series = $4 WHERE id =$5';
             let value = [item, name, danger, series,id];
-            const result = await pool.query(querystring, value);
+            const result = await client.query(querystring, value);
             res.send(result.rows);
         } catch (e) {
             console.log(e.stack);
@@ -93,7 +98,7 @@ app.delete('/api/scp/:id', (req, res) => {
             let id = req.params.id;
             let querystring = 'DELETE FROM scp WHERE id =$1';
             let value = [id];
-            const result = await pool.query(querystring, value);
+            const result = await client.query(querystring, value);
             res.send(result.rows);
         } catch (e) {
             console.log(e.stack);
