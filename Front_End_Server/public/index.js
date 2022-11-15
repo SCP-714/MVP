@@ -22,7 +22,7 @@ function generateSCP(data) {
     for (let i = 0; i < data.length; i++) {
         let $result = $(`
          <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="WIP SCP Image">
+                <img src=${data[i].img} class="card-img-top" alt="WIP SCP Image">
                     <div class="card-body" id="card">
                         <h5 class="card-title">${data[i].item_number}</h5>
                         <p class="card-text">${data[i].name}</p>
