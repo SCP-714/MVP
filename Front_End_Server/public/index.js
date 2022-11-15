@@ -6,12 +6,12 @@ let apiUrl =
 console.log('API', apiUrl);
 
 const $results = $('#results');
-
-console.log('helloWorld');
 const $displayButton = $('#display-scp');
 const $searchButton = $('#searchButton');
 const $searchBar = $('#searchBar'); 
+
 $displayButton.on('click', displayAllSCP);
+console.log('helloWorld');
 
 function displayAllSCP() {
     $.get(`${apiUrl}api/scp`).done(generateSCP);
