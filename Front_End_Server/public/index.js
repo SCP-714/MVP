@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 const ENV = 'production';
-const apiUrl = ENV == 'dev' ? 'http://localhost:2016/' : 'https://mvp-backend.onrender.com';
+const apiUrl = ENV == 'dev' ? 'http://localhost:2016/' : 'https://mvp-backend.onrender.com/';
 console.log('API', apiUrl);
 
 const $results = $('#results');
