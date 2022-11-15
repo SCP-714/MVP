@@ -29,4 +29,4 @@ Content-Type: application/json
     "series": 2
 }
 ### delete scp
-delete http://localhost:2016/api/scp/32
+delete http://localhost:2016/api/scp/33
