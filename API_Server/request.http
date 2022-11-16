@@ -5,7 +5,7 @@ get http://localhost:2016/
 get http://localhost:2016/api/scp
 
 ### one scp
-get http://localhost:2016/api/scp/1
+get http://localhost:2016/api/scp/15
 
 ### add scp
 post http://localhost:2016/api/scp
@@ -30,3 +30,7 @@ Content-Type: application/json
 }
 ### delete scp
 delete http://localhost:2016/api/scp/33
+
+
+###
+get http://localhost:2016/api/scp/45

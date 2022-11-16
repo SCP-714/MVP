@@ -42,7 +42,8 @@ app.get('/api/scp/:id', (req, res) => {
     async function getSCP() {
         try {
             let querystring = 'SELECT * FROM scp WHERE id = $1';
-            const result = await client.query(querystring, [req.params.id]);
+            let value = [req.params.id];
+            const result = await client.query(querystring, value);
             if (result.rows.length == 0){
                 res.sendStatus(404);
             }else{
@@ -54,6 +55,7 @@ app.get('/api/scp/:id', (req, res) => {
     }
     getSCP();
 });
+
 
 
 app.post('/api/scp', (req, res) => {
