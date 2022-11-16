@@ -8,7 +8,8 @@ const $displayButton = $('#display-scp');
 const $searchButton = $('#searchButton');
 const $input = $('#input');
 const $createButton = $('#create-scp');
-const $updateButton = $('#delete-scp');
+const $deleteButton = $('#delete-scp');
+const $updateButton = $('#update-scp');
 //Generating all SCP's//
 $displayButton.on('click', displayAllSCP);
 
@@ -67,7 +68,7 @@ function generateOneSCP(data) {
     $results.append($result);
 }
 
-
+//create SCP//
 $createButton.on('click', createSCP);
 
 function createSCP() {
@@ -111,7 +112,7 @@ function makeSCP() {
 }
 
 //delete
-$updateButton.on('click', deleteSCP);
+$deleteButton.on('click', deleteSCP);
 
 
 function deleteSCP() {
@@ -123,19 +124,64 @@ function deleteSCP() {
 function destroySCP() {
     
     $div=$('<div class="card" style="width: 18rem;"></div>');
-    $item=$('<input type="search" placeholder="SCP Item Number" aria-label="Search" id="input">');
+    $item=$('<input type="search" placeholder="Confirm SCP Item Number here" aria-label="Search" id="input">');
+    $item=$('<input type="search" placeholder="Confirm SCP Item Number here" aria-label="Search" id="input">');
+    $text=$('<p class="card-text">Enter SCP index in search bar to confirm delete</p>');
     $button=$('<button class="btn btn-danger" id="addButton">WARNING THIS WILL DELETE SCP</button>');
     
     
     $results.append($div);
-    $div.append($item,$button);
+    $div.append($item,$text,$button);
     
     $button.on('click',function(){
-        fetch('http://localhost:2016/api/scp/' + $input.val(),{
+        fetch('http://localhost:2016/api/scp/' + $item.val(),{
             method:'DELETE',
             body: JSON.stringify({
                 item_number: $item.val(),
                 
+            }),
+            headers:{
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        })
+            .then(res => res.json())
+            .then(data=>console.log(data))
+            .then(clearResults);
+    });
+    
+}
+
+//Update SCP
+$updateButton.on('click', updateSCP);
+
+function updateSCP() {
+    $.get(`${apiUrl}api/scp`).done(makeSCP);
+    clearResults();
+    console.log('create scp');
+}
+
+
+function makeSCP() {
+    
+    $div=$('<div class="card" style="width: 18rem;"></div>');
+    $item=$('<input type="search" placeholder="SCP index Number" aria-label="Search" id="input">');
+    $name=$('<input type="search" placeholder="Name" aria-label="Search" id="input">');
+    $class=$('<input type="search" placeholder="Class" aria-label="Search" id="input">');
+    $series=$('<input type="search" placeholder="Series" aria-label="Search" id="input">');
+    $button=$('<button class="btn btn-warning" id="addButton">Update SCP</button>');
+    
+    
+    $results.append($div);
+    $div.append($item,$name,$class,$series,$button);
+    
+    $button.on('click',function(){
+        fetch('http://localhost:2016/api/scp/' + $item.val(),{
+            method:'PATCH',
+            body: JSON.stringify({
+                item_number: $item.val(),
+                name: $name.val(),
+                class: $class.val(),
+                series: $series.val()
             }),
             headers:{
                 'Content-type': 'application/json; charset=UTF-8'
