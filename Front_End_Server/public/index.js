@@ -54,7 +54,7 @@ function searchAllSCP() {
 function generateOneSCP(data) {
     let $result = $(`
          <div class="card" style="width: 18rem;">
-                <img src="$data[0].img" class="card-img-top" alt="WIP SCP Image">
+                <img src=${data[0].img} class="card-img-top" alt="WIP SCP Image">
                     <div class="card-body" id="card">
                         <h5 class="card-title">${data[0].item_number}</h5>
                         <p class="card-text">${data[0].name}</p>
@@ -68,7 +68,7 @@ function generateOneSCP(data) {
     $results.append($result);
 }
 
-//create SCP//
+//add SCP//
 $createButton.on('click', createSCP);
 
 function createSCP() {
@@ -85,7 +85,7 @@ function makeSCP() {
     $name=$('<input type="search" placeholder="Name" aria-label="Search" id="input">');
     $class=$('<input type="search" placeholder="Class" aria-label="Search" id="input">');
     $series=$('<input type="search" placeholder="Series" aria-label="Search" id="input">');
-    $button=$('<button class="btn btn-primary" id="addButton">Add SCP</button>');
+    $button=$('<button class="btn btn-success" id="addButton">Add SCP</button>');
     
     
     $results.append($div);
@@ -111,7 +111,7 @@ function makeSCP() {
     
 }
 
-//delete
+//delete scp
 $deleteButton.on('click', deleteSCP);
 
 
@@ -126,7 +126,7 @@ function destroySCP() {
     $div=$('<div class="card" style="width: 18rem;"></div>');
     $item=$('<input type="search" placeholder="Confirm SCP Item Number here" aria-label="Search" id="input">');
     $item=$('<input type="search" placeholder="Confirm SCP Item Number here" aria-label="Search" id="input">');
-    $text=$('<p class="card-text">Enter SCP index in search bar to confirm delete</p>');
+    $text=$('<p class="card-text">Enter SCP index to confirm delete</p>');
     $button=$('<button class="btn btn-danger" id="addButton">WARNING THIS WILL DELETE SCP</button>');
     
     
@@ -155,13 +155,13 @@ function destroySCP() {
 $updateButton.on('click', updateSCP);
 
 function updateSCP() {
-    $.get(`${apiUrl}api/scp`).done(makeSCP);
+    $.get(`${apiUrl}api/scp`).done(fixSCP);
     clearResults();
     console.log('create scp');
 }
 
 
-function makeSCP() {
+function fixSCP() {
     
     $div=$('<div class="card" style="width: 18rem;"></div>');
     $item=$('<input type="search" placeholder="SCP index Number" aria-label="Search" id="input">');
